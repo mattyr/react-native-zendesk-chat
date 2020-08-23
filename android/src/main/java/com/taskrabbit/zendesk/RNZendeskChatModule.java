@@ -186,10 +186,10 @@ public class RNZendeskChatModule extends ReactContextBaseJavaModule {
 
     private ChatConfiguration.Builder loadPreChatFormConfiguration(ChatConfiguration.Builder b, ReadableMap options) {
         PreChatFormFieldStatus defaultValue = PreChatFormFieldStatus.OPTIONAL;
-        return b.withNameFieldStatus(getFieldStatusOrDefault(options, "name", defaultValue))
-                .withEmailFieldStatus(getFieldStatusOrDefault(options, "email", defaultValue))
-                .withPhoneFieldStatus(getFieldStatusOrDefault(options, "phone", defaultValue))
-                .withDepartmentFieldStatus(getFieldStatusOrDefault(options, "department", defaultValue));
+        return b.withNameFieldStatus(PreChatFormFieldStatus.HIDDEN)
+                .withEmailFieldStatus(PreChatFormFieldStatus.HIDDEN)
+                .withPhoneFieldStatus(PreChatFormFieldStatus.HIDDEN)
+                .withDepartmentFieldStatus(PreChatFormFieldStatus.HIDDEN);
     }
 
     private void loadTags(ReadableMap options) {
