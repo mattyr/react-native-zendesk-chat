@@ -271,6 +271,7 @@ public class RNZendeskChatModule extends ReactContextBaseJavaModule {
         Activity activity = getCurrentActivity();
         if (activity != null) {
             messagingBuilder.withEngines(ChatEngine.engine()).show(activity, chatConfig);
+            Chat.INSTANCE.providers().chatProvider().sendMessage("¡Hola Reserve!");
         } else {
             Log.e(TAG, "Could not load getCurrentActivity -- no UI can be displayed without it.");
         }
