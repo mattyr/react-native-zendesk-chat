@@ -265,13 +265,17 @@ public class RNZendeskChatModule extends ReactContextBaseJavaModule {
 
         loadTags(options);
 
+        String initialMessage = RNZendeskChatModule.getStringOrNull(options, "initialMessage", "startChat");
+
         MessagingConfiguration.Builder messagingBuilder = loadBotSettings(
                 getReadableMap(options, "messagingOptions", "startChat"), MessagingActivity.builder());
 
         Activity activity = getCurrentActivity();
         if (activity != null) {
             messagingBuilder.withEngines(ChatEngine.engine()).show(activity, chatConfig);
-            Chat.INSTANCE.providers().chatProvider().sendMessage("¡Hola Reserve!");
+            if (initialMessage != null) {
+              Chat.INSTANCE.providers().chatProvider().sendMessage(initialMessage);
+            }
         } else {
             Log.e(TAG, "Could not load getCurrentActivity -- no UI can be displayed without it.");
         }
